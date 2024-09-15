@@ -1,4 +1,4 @@
-import { Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
+import { Text, StyleSheet, TouchableOpacity } from "react-native";
 
 interface Props {
   label: string;
