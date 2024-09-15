@@ -8,12 +8,12 @@ import Header from "../../components/Header";
 import CircleButton from "../../components/CircleButton";
 import Icon from "../../components/icon";
 
-const Edit = () => {
+const Create = () => {
   return (
     <KeyboardAvoidingView behavior="height" style={styles.container}>
       <Header />
       <View style={styles.inputContainer}>
-        <TextInput multiline value={"買い物\nリスト"} style={styles.input} />
+        <TextInput multiline value="" style={styles.input} />
       </View>
       <CircleButton>
         <Icon name="check" size={40} color="#FFFFFF" />
@@ -39,4 +39,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Edit;
+export default Create;
