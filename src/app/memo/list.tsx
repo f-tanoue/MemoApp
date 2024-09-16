@@ -41,8 +41,6 @@ const List = (): JSX.Element => {
     return unsubscribe;
   }, []);
 
-  console.log(memos);
-
   return (
     <View style={styles.container}>
       <FlatList

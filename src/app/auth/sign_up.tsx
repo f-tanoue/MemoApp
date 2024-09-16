@@ -12,18 +12,15 @@ const SignUp = () => {
 
   const handlePress = (email: string, password: string) => {
     // 会員登録
-    console.log(email, password);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         //Eメールとパスワードの登録に成功したとき
         router.replace("/memo/list");
-        console.log(userCredential.user.uid);
       })
       .catch((error) => {
         //Eメールとパスワードの登録に失敗したとき
         const { code, message } = error;
         Alert.alert(message);
-        console.log(code, message);
       });
   };
 

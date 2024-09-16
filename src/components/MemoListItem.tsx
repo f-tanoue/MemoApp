@@ -18,7 +18,7 @@ const MemoListItem = (props: Props) => {
   }, [memo.updatedAt]);
 
   return (
-    <Link href="memo/detail" asChild>
+    <Link href={{ pathname: "memo/detail", params: { id: memo.id } }} asChild>
       <TouchableOpacity>
         <View style={styles.memoListItem}>
           <View>
