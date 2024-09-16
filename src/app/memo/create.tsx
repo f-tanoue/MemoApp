@@ -13,7 +13,7 @@ const handlePress = async (bodyText: string) => {
   //メモを作成
   addDoc(ref, {
     bodyText,
-    updateAt: Timestamp.fromDate(new Date()),
+    updatedAt: Timestamp.fromDate(new Date()),
   })
     .then((docRef) => {
       console.log("success", docRef.id);
