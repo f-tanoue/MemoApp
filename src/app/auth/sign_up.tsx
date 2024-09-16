@@ -1,17 +1,32 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import InputText from "../../components/InputText";
 import Button from "../../components/Button";
 import { Link, router } from "expo-router";
 import { useState } from "react";
-
-const handlePress = () => {
-  // ログイン
-  router.push("/memo/list");
-};
+import { auth } from "../../config";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handlePress = (email: string, password: string) => {
+    // 会員登録
+    console.log(email, password);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        //Eメールとパスワードの登録に成功したとき
+        router.replace("/memo/list");
+        console.log(userCredential.user.uid);
+      })
+      .catch((error) => {
+        //Eメールとパスワードの登録に失敗したとき
+        const { code, message } = error;
+        Alert.alert(message);
+        console.log(code, message);
+      });
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.inner}>
@@ -28,7 +43,7 @@ const SignUp = () => {
           type="password"
           placeholder="Password"
         />
-        <Button label="Submit" onPress={handlePress} />
+        <Button label="Submit" onPress={() => handlePress(email, password)} />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already registered?</Text>
           <Link href="auth/log_in" asChild>

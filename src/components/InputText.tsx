@@ -33,7 +33,7 @@ const InputText = (props: Props) => {
     <TextInput
       style={styles.input}
       value={value}
-      onChange={onChange}
+      onChangeText={onChange}
       autoCapitalize="none"
       keyboardType={keyboardType}
       secureTextEntry={type === "password"}
