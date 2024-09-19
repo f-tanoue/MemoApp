@@ -1,16 +1,11 @@
-import {
-  View,
-  TextInput,
-  StyleSheet,
-  KeyboardAvoidingView,
-  Alert,
-} from "react-native";
+import { View, TextInput, StyleSheet, Alert } from "react-native";
 import CircleButton from "../../components/CircleButton";
 import Icon from "../../components/icon";
 import { router, useLocalSearchParams } from "expo-router";
 import { doc, getDoc, setDoc, Timestamp } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db, auth } from "../../config";
+import KeyboardAvoidingView from "../../components/KeyboardAvoidingView";
 
 const handlePress = (id: string, bodyText: string) => {
   if (auth.currentUser === null) return;
@@ -40,13 +35,14 @@ const Edit = () => {
   }, []);
 
   return (
-    <KeyboardAvoidingView behavior="height" style={styles.container}>
+    <KeyboardAvoidingView style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput
           multiline
           value={bodyText}
           style={styles.input}
           onChangeText={(text) => setBodyText(text)}
+          autoFocus
         />
       </View>
       <CircleButton onPress={() => handlePress(id, bodyText)}>
