@@ -5,13 +5,24 @@ import { router } from "expo-router";
 
 const handlePress = () => {
   //ログアウトの処理
-  signOut(auth)
-    .then(() => {
-      router.replace("/auth/log_in");
-    })
-    .catch(() => {
-      Alert.alert("ログアウトに失敗しました。");
-    });
+
+  Alert.alert("ログアウトします。", "よろしいですか？", [
+    {
+      text: "キャンセル",
+    },
+    {
+      text: "ログアウト",
+      style: "destructive",
+      onPress: () =>
+        signOut(auth)
+          .then(() => {
+            router.replace("/auth/log_in");
+          })
+          .catch(() => {
+            Alert.alert("ログアウトに失敗しました。");
+          }),
+    },
+  ]);
 };
 
 const LogOutButton = () => {
