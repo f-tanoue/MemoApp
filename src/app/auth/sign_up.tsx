@@ -20,7 +20,7 @@ const SignUp = () => {
       .catch((error) => {
         //Eメールとパスワードの登録に失敗したとき
         const { code, message } = error;
-        Alert.alert(message);
+        Alert.alert("すでに登録されているアカウントです。");
       });
   };
 

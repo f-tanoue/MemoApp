@@ -14,7 +14,7 @@ const handlePress = (email: string, password: string) => {
     })
     .catch((error) => {
       const { code, message } = error;
-      Alert.alert(message);
+      Alert.alert("Eメールまたはパスワードが間違っています。");
     });
 };
 
